@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @State private var firstName:String = ""
+    @State private var lastName:String = ""
+    @State private var birthdate = Date()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView{
+            Form{
+                Section(header:Text("Personal Information")){
+                  TextField("First Name", text: $firstName)
+                    TextField("Last Name", text: $lastName)
+                    DatePicker("BirthDate", selection: $birthdate)
+                }
+            }
         }
-        .padding()
     }
 }
 
